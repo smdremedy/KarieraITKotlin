@@ -7,6 +7,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.button
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.linearLayout
 import org.jetbrains.anko.toast
 
 import java.util.HashMap
@@ -44,12 +47,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
 
         signInButton.setOnClickListener {
             loginManager.login(usernameEditText.text.toString(), passwordEditText.text.toString())
             toast("test")
+
+            startActivity(intentFor<DynamicActivity>("extraValue" to 2))
 
         }
 
